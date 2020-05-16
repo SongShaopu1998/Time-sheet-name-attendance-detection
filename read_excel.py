@@ -28,6 +28,7 @@ for i in range(len(standard_student_namelist)):  # students in the standard name
     if name1[0] == '海':
         del name1[0]
     name1 = ''.join(name1)
+    # there is two students having the exact same name...
     if name1 == '刘新宇':
         cell_LXY = standard_data_table.row(i + 6)[6].value
         class_LXY = cell_LXY[-1]
@@ -49,6 +50,7 @@ for j in range(len(class_namelist)):  # students joining the class
     if name2[0] == '号':
         del name2[0]
     name2 = ''.join(name2)
+    # address the same name
     if name2 == '刘新宇':
         class_LXY = element2[0]
         name2 = class_LXY + '-' + name2
