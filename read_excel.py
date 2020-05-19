@@ -4,7 +4,7 @@ import copy
 import pyperclip
 
 # name of the standard students list
-standard_data = xlrd.open_workbook('181.xls')
+standard_data = xlrd.open_workbook('187.xls')
 # excel file of today's attendance
 class_data = xlrd.open_workbook('students.xlsx')
 standard_data_table = standard_data.sheet_by_index(0)
@@ -59,6 +59,7 @@ for j in range(len(class_namelist)):  # students joining the class
 Notcome_list = copy.deepcopy(standard_name)
 # [class_name1.append(i) for i in class_name if not i in class_name1]
 class_name1 = list(set(class_name))
+Come_list = copy.deepcopy(class_name1)
 # print(class_name1)
 # print(standard_name)
 print(len(Notcome_list))
@@ -68,15 +69,17 @@ for k in range(len(standard_name)):
         if standard_name[k] == class_name1[w]:
             # print(standard_name[w])
             Notcome_list.remove(standard_name[k])
+            Come_list.remove(class_name1[w])
             break
         else:
             continue
 
-print(Notcome_list)
+print('这些人没来上课, {}'.format(Notcome_list))
+print('多出了这些人, {}'.format(Come_list))
 
-# copy the name to the clipboard 
-name = ' '.join(Notcome_list)
-print(name)
-pyperclip.copy(name)
+# copy the name to the clipboard
+# name = ' '.join(Notcome_list)
+# print(name)
+# pyperclip.copy(name)
 
 # print(class_namelist)
